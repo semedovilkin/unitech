@@ -1,0 +1,10 @@
+#jwt config params
+jwt:
+  secret: JWTSuperSecretKeyForAuthentification
+  token:
+    expirationInMs: 86400000
+
+# logging level
+logging:
+  level:
+    com.samad.authms: debug

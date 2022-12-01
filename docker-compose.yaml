@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+
+#  user_ms:
+#    image: userms_image:latest
+#    container_name: userms
+#    environment:
+#      DATABASE_URL: userms_db
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - userms_db
+#    networks:
+#      assignment-network:
+#        aliases:
+#          - userms
+
+  userms_db:
+    image: postgres:11.8
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=assignment_local
+    networks:
+      assignment-network:
+        aliases:
+          - userms_db
+networks:
+  assignment-network:
+    driver: bridge
