@@ -12,18 +12,18 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "user_login")
-public class User implements Serializable {
+public class User extends AbstractEntity implements Serializable {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
-    private Long id;
+    @GeneratedValue(generator = "user_login_seq_generator")
+    @SequenceGenerator(name = "user_login_seq_generator", sequenceName = "user_login_seq", allocationSize = 1)
+    private long id;
     @Column(name = "pin")
     private String pin;
     @Column(name = "password")
     private String password;
     @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private UserStatusesEnum status;
 
     @OneToMany(mappedBy = "user",

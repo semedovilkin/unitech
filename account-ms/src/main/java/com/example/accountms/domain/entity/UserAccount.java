@@ -13,11 +13,11 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 @Entity
 @Table(name = "user_account",schema = "public")
-public class UserAccount implements Serializable {
+public class UserAccount extends AbstractEntity implements Serializable {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @GeneratedValue(generator = "account_seq_generator")
+    @SequenceGenerator(name = "account_seq_generator", sequenceName = "account_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "account_number")
@@ -30,7 +30,7 @@ public class UserAccount implements Serializable {
     private Currency currency;
 
     @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private AccountStatusEnum status;
 
     @ManyToOne(fetch = FetchType.LAZY)

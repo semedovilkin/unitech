@@ -14,6 +14,14 @@ services:
 #      assignment-network:
 #        aliases:
 #          - userms
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      assignment-network:
+        aliases:
+          - redis
 
   userms_db:
     image: postgres:11.8

@@ -1,6 +1,5 @@
 package com.example.accountms.domain.entity;
 
-import com.example.accountms.domain.enumeration.UserStatusesEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.Where;
@@ -13,13 +12,14 @@ import java.util.List;
 @Accessors(chain = true)
 @Entity
 @Table(name = "users",schema = "public")
-//@Where(clause = "state ='ACTIVE'")
-public class User implements Serializable {
+@Where(clause = "state <> 0")
+public class User extends AbstractEntity implements Serializable {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
-    private Long id;
+    @GeneratedValue(generator = "user_seq_generator")
+    @SequenceGenerator(name = "user_seq_generator", sequenceName = "user_seq", allocationSize = 1)
+    private long id;
+
     @Column(name = "pin")
     private String pin;
 
@@ -29,15 +29,10 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
-    private UserStatusesEnum status;
-
     @OneToMany(mappedBy = "user",
             orphanRemoval = true,
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<UserAccount> accounts;
-
 
 }
