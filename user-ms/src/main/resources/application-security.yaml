@@ -1,6 +1,6 @@
 #jwt config params
 jwt:
-  secret: JWTSuperSecretKeyForAuthentification
+  secret: JWTSuperSecretKeyForAuthentication
   token:
     expirationInMs: 86400000
 

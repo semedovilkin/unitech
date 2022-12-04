@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "15aad8dd-b7cf-4ff4-9d2e-0742e2fbef6c",
+		"name": "unitech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9590991"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "sing-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pin\":\"63ZZZ5Z\",\r\n    \"password\":\"123456789mksldv!@aaQDA!#@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/sign-up",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign-in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pin\":\"qqq\",\r\n    \"password\":\"123456789mksldv!@aaQDA!#@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/sign-in",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"sign-in"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sign-in-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"pin\":\"qqq\",\r\n    \"password\":\"123456789mksldv!@aaQDA!#@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/user/sign-in",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"sign-in"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Dec 2022 19:25:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jwtToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJwaW4iOiJxcXEiLCJpYXQiOjE2NzAxODE5NDgsImV4cCI6MTY3MDI2ODM0OH0.XrqP5XQwUeE-ChzMy7N8pblXlgpeU23WptuChUwHGB8\"\n}"
+						}
+					]
+				},
+				{
+					"name": "check-token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth_token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJwaW4iOiI2M1JMam9rbGtwRmo1WiIsImlhdCI6MTY2OTg5ODYyNiwiZXhwIjoxNjY5OTg1MDI2fQ.ViGGtjWeyNbLFkKB7T3nlxswoVztHBjN9q3wQKYqSoQ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jwtToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJwaW4iOiJxcXEiLCJpYXQiOjE2NzAxODE5NDgsImV4cCI6MTY3MDI2ODM0OH0.XrqP5XQwUeE-ChzMy7N8pblXlgpeU23WptuChUwHGB8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/check/jwtToken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"check",
+								"jwtToken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth_token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJwaW4iOiJxcXEiLCJpYXQiOjE2NzAxODE5NDgsImV4cCI6MTY3MDI2ODM0OH0.XrqP5XQwUeE-ChzMy7N8pblXlgpeU23WptuChUwHGB8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/account/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"account",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account2account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth_token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJwaW4iOiJxcXEiLCJpYXQiOjE2NzAxODE5NDgsImV4cCI6MTY3MDI2ODM0OH0.XrqP5XQwUeE-ChzMy7N8pblXlgpeU23WptuChUwHGB8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderAccount\": 123,\r\n    \"receiverAccount\": 321,\r\n    \"currency\": \"AZN\",\r\n    \"amount\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/transactions/account2account",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"transactions",
+								"account2account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "currency",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8082/currency/exchange/azn/usd",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/currency/exchange/azn/usd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"currency",
+								"exchange",
+								"azn",
+								"usd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

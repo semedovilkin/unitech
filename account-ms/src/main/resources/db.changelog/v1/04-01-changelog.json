@@ -1,0 +1,438 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1670135567224-1",
+        "author": "ilkin",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_transactions"
+                    },
+                    "name": "id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "state",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "amount",
+                    "type": "DECIMAL"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "operation",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "account_id",
+                    "type": "BIGINT"
+                  }
+                }
+              ],
+              "tableName": "transactions"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1670135567224-2",
+        "author": "ilkin",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_account"
+                    },
+                    "name": "id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "state",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "balance",
+                    "type": "DECIMAL"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "is_active",
+                    "type": "BOOLEAN"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "account_number",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "customer_id",
+                    "type": "BIGINT"
+                  }
+                }
+              ],
+              "schemaName": "public",
+              "tableName": "account"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1670135567224-3",
+        "author": "ilkin",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_customers"
+                    },
+                    "name": "id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "state",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "pin",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "first_name",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "last_name",
+                    "type": "VARCHAR(255)"
+                  }
+                }
+              ],
+              "schemaName": "public",
+              "tableName": "customers"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1670135567224-4",
+        "author": "ilkin",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "account_id",
+              "baseTableName": "transactions",
+              "constraintName": "FK_TRANSACTIONS_ON_ACCOUNT",
+              "referencedColumnNames": "id",
+              "referencedTableName": "account",
+              "referencedTableSchemaName": "public"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1670135567224-5",
+        "author": "ilkin",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "customer_id",
+              "baseTableName": "account",
+              "baseTableSchemaName": "public",
+              "constraintName": "FK_ACCOUNT_ON_CUSTOMER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "customers",
+              "referencedTableSchemaName": "public"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet":{
+        "id":"1234598756544-9",
+        "author": "ilkin",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes":[
+          {
+            "insert":{
+              "catalogName":"",
+              "columns":[
+                {
+                  "column":{
+                    "name":"id",
+                    "value": 1
+                  }
+                },
+                {
+                  "column":{
+                    "name":"created_date",
+                    "value": "2022-12-05 00:30:04.000000"
+                  }
+                },
+                {
+                  "column":{
+                    "name":"updated_date",
+                    "value": null
+                  }
+                },
+                {
+                  "column":{
+                    "name":"state",
+                    "value": 1
+                  }
+                },
+                {
+                  "column":{
+                    "name":"pin",
+                    "value": "63AAZZP"
+                  }
+                },
+                {
+                  "column":{
+                    "name":"first_name",
+                    "value": "ilkin"
+                  }
+                },
+                {
+                  "column":{
+                    "name":"last_name",
+                    "value": "samadov"
+                  }
+                }
+              ],
+              "dbms":"",
+              "schemaName":"public",
+              "tableName":"customers"
+            }
+          },
+          {
+            "insert":{
+              "catalogName":"",
+              "columns":[
+                {
+                  "column":{
+                    "name":"id",
+                    "value": 1
+                  }
+                },
+                {
+                  "column":{
+                    "name":"created_date",
+                    "value": "2022-12-05 00:30:04.000000"
+                  }
+                },
+                {
+                  "column":{
+                    "name":"updated_date",
+                    "value": null
+                  }
+                },
+                {
+                  "column":{
+                    "name":"state",
+                    "value": 1
+                  }
+                },
+                {
+                  "column":{
+                    "name":"balance",
+                    "value": 100000
+                  }
+                },
+                {
+                  "column":{
+                    "name":"is_active",
+                    "value": true
+                  }
+                },
+                {
+                  "column":{
+                    "name":"account_number",
+                    "value": 123
+                  }
+                },
+                {
+                  "column":{
+                    "name":"customer_id",
+                    "value": 1
+                  }
+                }
+              ],
+              "dbms":"",
+              "schemaName":"public",
+              "tableName":"account"
+            }
+          },
+          {
+            "insert":{
+              "catalogName":"",
+              "columns":[
+                {
+                  "column":{
+                    "name":"id",
+                    "value": 2
+                  }
+                },
+                {
+                  "column":{
+                    "name":"created_date",
+                    "value": "2022-12-05 00:30:04.000000"
+                  }
+                },
+                {
+                  "column":{
+                    "name":"updated_date",
+                    "value": null
+                  }
+                },
+                {
+                  "column":{
+                    "name":"state",
+                    "value": 1
+                  }
+                },
+                {
+                  "column":{
+                    "name":"balance",
+                    "value": 10000
+                  }
+                },
+                {
+                  "column":{
+                    "name":"is_active",
+                    "value": true
+                  }
+                },
+                {
+                  "column":{
+                    "name":"account_number",
+                    "value": 321
+                  }
+                },
+                {
+                  "column":{
+                    "name":"customer_id",
+                    "value": 1
+                  }
+                }
+              ],
+              "dbms":"",
+              "schemaName":"public",
+              "tableName":"account"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,17 +1,5 @@
-rootProject.name = 'unibank'
+rootProject.name = 'unitech'
 
-
-////Java Projects
-//include 'common'
-//include 'common-security'
-include 'user-ms' //8080
-//include 'user-managment-ms' //8081
-//include 'assessments-ms' //8082
-//include 'files-ms' //8083
-//include 'notifications-ms' //8084
-//include 'articles-ms' //8085
-//include 'customers-ms' //8086
-//include 'billing-ms' // 8087
-//include  'orchestrator' //8088
-
-
+include 'user-ms'
+include 'currency-ms'
+include 'account-ms'

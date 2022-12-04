@@ -1,0 +1,144 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1670135318073-1",
+        "author": "scc (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_roles"
+                    },
+                    "name": "id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "active",
+                    "type": "BOOLEAN"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "user_id",
+                    "type": "BIGINT"
+                  }
+                }
+              ],
+              "tableName": "roles"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1670135318073-2",
+        "author": "scc (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_user_login"
+                    },
+                    "name": "id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_date",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "pin",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "password",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "status",
+                    "type": "VARCHAR(255)"
+                  }
+                }
+              ],
+              "tableName": "user_login"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1670135318073-3",
+        "author": "scc (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "user_id",
+              "baseTableName": "roles",
+              "constraintName": "FK_ROLES_ON_USERID",
+              "referencedColumnNames": "id",
+              "referencedTableName": "user_login"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
